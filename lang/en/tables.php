@@ -12,5 +12,14 @@ return [
         'created_at' => 'Created at',
         'updated_at' => 'Updated at',
         'deleted_at' => 'Deleted at',
+    ],
+    'users' => [
+        'id' => 'ID',
+        'first_given_name' => 'First given name',
+        'second_given_name' => 'Second given name',
+        'first_family_name' => 'First family name',
+        'second_family_name' => 'Second family name',
+        'email' => 'Email',
+        'password' => 'Password',
     ]
 ];

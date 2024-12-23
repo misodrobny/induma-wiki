@@ -1,15 +1,15 @@
 <div class="space-y-10 divide-y divide-gray-900/10">
     <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
         <div class="px-4 sm:px-0">
-            <h2 class="text-base/7 font-semibold text-gray-900">{{ __('pages.documents.upload.header') }}</h2>
-            <p class="mt-1 text-sm/6 text-gray-600">{{ __('pages.documents.upload.description') }}</p>
+            <h2 class="text-base/7 font-semibold text-gray-900">{{ __('application.pages.documents.upload.header') }}</h2>
+            <p class="mt-1 text-sm/6 text-gray-600">{{ __('application.pages.documents.upload.description') }}</p>
         </div>
 
         <form wire:submit="save" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
             <div class="px-4 py-6 sm:p-8">
                 <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-4">
-                        <label for="name" class="block text-sm/6 font-medium text-gray-900">{{ __('pages.documents.upload.name') }}</label>
+                        <label for="name" class="block text-sm/6 font-medium text-gray-900">{{ __('application.pages.documents.upload.name') }}</label>
                         <div class="mt-2">
                             <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                                 <input
@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="col-span-full">
-                        <label for="cover-photo" class="block text-sm/6 font-medium text-gray-900">{{ __('pages.documents.upload.document_file') }}</label>
+                        <label for="cover-photo" class="block text-sm/6 font-medium text-gray-900">{{ __('application.pages.documents.upload.document_file') }}</label>
                         <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                             <div class="text-center">
                                 @if($file instanceof Livewire\Features\SupportFileUploads\TemporaryUploadedFile)
@@ -35,11 +35,11 @@
                                 @endif
                                 <div class="mt-4 flex text-sm/6 text-gray-600">
                                     <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                                        <span>{{ __('pages.documents.upload.upload_file_text') }}</span>
+                                        <span>{{ __('application.pages.documents.upload.upload_file_text') }}</span>
                                         <input wire:model.live="file" id="file-upload" name="file-upload" type="file" class="sr-only">
                                     </label>
                                 </div>
-                                <p class="text-xs/5 text-gray-600">{{ __('pages.documents.upload.upload_file_max_size_text') }}</p>
+                                <p class="text-xs/5 text-gray-600">{{ __('application.pages.documents.upload.upload_file_max_size_text') }}</p>
                             </div>
                         </div>
                         @error('file')

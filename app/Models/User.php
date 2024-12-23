@@ -3,13 +3,24 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property int $id
+ * @property string $first_given_name
+ * @property string|null $second_given_name
+ * @property string $first_family_name
+ * @property string $second_family_name
+ * @property string $email
+ * @property string $password
+ * 
+ */
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -18,7 +29,10 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_given_name',
+        'second_given_name',
+        'first_family_name',
+        'second_family_name',
         'email',
         'password',
     ];
@@ -44,5 +58,21 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getFullname(): string
+    {
+        $parts = [
+            $this->first_given_name,
+            $this->second_given_name,
+            $this->first_family_name,
+            $this->second_family_name,
+        ];
+
+        // Remove any null or empty values
+        $parts = array_filter($parts, fn($name) => !empty($name));
+
+        // Concatenate with spaces
+        return implode(' ', $parts);
     }
 }

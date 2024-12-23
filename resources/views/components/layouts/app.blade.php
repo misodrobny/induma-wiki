@@ -37,6 +37,7 @@
 
     <flux:navlist variant="outline">
         <flux:navlist.item icon="information-circle" href="#">{{ __('global.menu.help') }}</flux:navlist.item>
+        <flux:navlist.item>{{ ApplicationVersion::getFormatedVersion() }}</flux:navlist.item>
     </flux:navlist>
 
 </flux:sidebar>
@@ -48,11 +49,17 @@
 
     @include('components.language')
 
-    <flux:dropdown position="top" alignt="start">
-        <flux:profile avatar=""/>
-
+    <flux:dropdown position="top" align="start">
+        <flux:profile avatar="{{ asset('images/avatar.png') }}"></flux:profile>
         <flux:menu>
-            <flux:menu.item icon="arrow-right-start-on-rectangle">{{ __('global.menu.logout') }}</flux:menu.item>
+            <flux:menu.item href="{{ route('application.profile') }}">{{ auth()->user()->getFullname() }}</flux:menu.item>
+
+            <flux:menu.separator />
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <flux:menu.item type="submit" icon="arrow-right-start-on-rectangle">{{ __('global.logout') }}</flux:menu.item>
+            </form>
         </flux:menu>
     </flux:dropdown>
 </flux:header>
