@@ -1,8 +1,8 @@
 <x-layouts.app>
     <x-slot name="breadcrumb">
         <x-breadcrumbs :data="[
-    'Documents' => route('application.documents.list'),
-    'Upload' => null
+    __('global.menu.documents') => route('application.documents.list'),
+     __('global.menu.upload') => null
 ]"/>
     </x-slot>
 

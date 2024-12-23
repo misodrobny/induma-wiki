@@ -3,6 +3,7 @@
 use App\Domains\Application\Dashboard\Controllers\DashboardController;
 use App\Domains\Application\Documents\Controllers\ListDocumentsController;
 use App\Domains\Application\Documents\Controllers\UploadDocumentController;
+use App\Domains\Global\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
@@ -20,6 +21,9 @@ Route::middleware([
                 Route::get('document/upload', UploadDocumentController::class)
                     ->name('document.upload');
             });
+
+        Route::get('language/{locale}', LanguageController::class)
+            ->name('language');
     });
 
 

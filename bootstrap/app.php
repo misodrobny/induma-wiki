@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Middleware\Localization;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Console\Scheduling\Schedule;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -11,11 +13,17 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->web(append: [
+            Localization::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })
     ->withEvents(discover: [
         __DIR__.'/../app/Domains/Application/Documents/Listeners',
-    ])->create();
+    ])
+    ->withSchedule(function (Schedule $schedule) {
+        $schedule->call('activitylog:clean')->daily();
+    })
+    ->create();

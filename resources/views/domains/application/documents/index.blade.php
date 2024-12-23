@@ -1,7 +1,7 @@
 <x-layouts.app>
     <x-slot name="breadcrumb">
         <x-breadcrumbs :data="[
-    'Documents' => null
+    __('global.menu.documents') => null
 ]"/>
     </x-slot>
     <livewire:application.documents.table/>

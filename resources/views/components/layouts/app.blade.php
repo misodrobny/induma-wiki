@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ $title ?? 'INDUMA LLM Data Preprocessor' }}</title>
+    <title>{{ $title ?? 'INDUMA Wiki' }}</title>
 
     @livewireStyles
     @fluxStyles
@@ -15,17 +15,20 @@
 <flux:sidebar sticky stashable class="bg-zinc-50 dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-700">
     <flux:sidebar.toggle class="lg:hidden" icon="x-mark"/>
 
-    <flux:brand href="{{ route('application.dashboard') }}" name="INDUMA s.a.s." class="px-2 dark:hidden"/>
-    <flux:brand href="{{ route('application.dashboard') }}" name="INDUMA s.a.s." class="px-2 hidden dark:flex"/>
+    <a href="{{ route('application.dashboard') }}" data-flux-brand>
+        <div class="h-10 rounded overflow-hidden shrink-0">
+            <img src="{{ asset('images/logo_induma.webp') }}" alt="Logo" class="h-10"/>
+        </div>
+    </a>
 
     <flux:navlist variant="outline">
         <flux:navlist.item icon="home"
                            href="{{ route('application.dashboard') }}"
-                           :current="Route::is('application.dashboard')">Home
+                           :current="Route::is('application.dashboard')">{{ __('global.menu.home') }}
         </flux:navlist.item>
         <flux:navlist.item icon="document-text"
                            href="{{ route('application.documents.list') }}"
-                           :current="str_contains(Route::currentRouteName(), 'application.document')">Documents
+                           :current="str_contains(Route::currentRouteName(), 'application.document')">{{ __('global.menu.documents') }}
         </flux:navlist.item>
 
     </flux:navlist>
@@ -33,7 +36,7 @@
     <flux:spacer/>
 
     <flux:navlist variant="outline">
-        <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
+        <flux:navlist.item icon="information-circle" href="#">{{ __('global.menu.help') }}</flux:navlist.item>
     </flux:navlist>
 
 </flux:sidebar>
@@ -43,11 +46,13 @@
 
     <flux:spacer/>
 
+    @include('components.language')
+
     <flux:dropdown position="top" alignt="start">
         <flux:profile avatar=""/>
 
         <flux:menu>
-            <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
+            <flux:menu.item icon="arrow-right-start-on-rectangle">{{ __('global.menu.logout') }}</flux:menu.item>
         </flux:menu>
     </flux:dropdown>
 </flux:header>

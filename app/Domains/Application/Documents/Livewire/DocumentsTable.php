@@ -51,15 +51,16 @@ class DocumentsTable extends DataTableComponent
                     return true;
                 })
                 ->setView('domains.application.documents.livewire.json-button'),
-            Column::make("Name", "name")
+            Column::make(__('tables.documents.name'), "name")
                 ->searchable()
                 ->sortable(),
-            Column::make("Original filename", "original_filename")
+            Column::make(__('tables.documents.original_filename'), "original_filename")
                 ->searchable()
                 ->sortable(),
-            Column::make("Created at", "created_at")
+            Column::make(__('tables.documents.created_at'), "created_at")
                 ->sortable(),
             Column::make('')
+                ->excludeFromColumnSelect()
                 ->label(
                     fn(
                         $row,
