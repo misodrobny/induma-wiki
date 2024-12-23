@@ -39,7 +39,7 @@ class Document extends Model
         'json_data',
         'llama_cloud_id',
         'llama_cloud_status',
-        'llama_cloud_job_metadata'
+        'llama_cloud_job_metadata',
     ];
 
     protected function casts(): array

@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 
 class LLMDataProcessingRunningEvent implements ShouldQueue
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels, InteractsWithQueue;
+    use Dispatchable, InteractsWithQueue, InteractsWithSockets, SerializesModels;
 
     public function __construct(public readonly Document $document) {}
 }

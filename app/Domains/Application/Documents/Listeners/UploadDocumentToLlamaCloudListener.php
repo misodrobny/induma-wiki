@@ -2,7 +2,6 @@
 
 namespace App\Domains\Application\Documents\Listeners;
 
-use App\Domains\Application\Documents\DataTransferObjects\LlamaCloud\LlamaCloudDocumentDto;
 use App\Domains\Application\Documents\Events\LLMDataProcessingRunningEvent;
 use App\Domains\Application\Documents\Events\LLMDataProcessingTriggeredEvent;
 use Exception;
@@ -14,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 class UploadDocumentToLlamaCloudListener implements ShouldQueue
 {
     use InteractsWithQueue;
+
     public function __construct() {}
 
     public function handle(LLMDataProcessingTriggeredEvent $event): void

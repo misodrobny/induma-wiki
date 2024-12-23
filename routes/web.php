@@ -1,9 +1,10 @@
 <?php
 
 use App\Domains\Application\Dashboard\Controllers\DashboardController;
+use App\Domains\Application\Documents\Controllers\GetDocumentJsonDataController;
 use App\Domains\Application\Documents\Controllers\ListDocumentsController;
 use App\Domains\Application\Documents\Controllers\UploadDocumentController;
-use App\Domains\Application\Documents\Models\Document;
+use App\Domains\Application\Global\Controllers\LogoutController;
 use App\Domains\Global\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,25 +32,11 @@ Route::middleware([
                         })->name('profile');
                     });
 
-                Route::post('logout', function () {
-                    Auth::guard('web')->logout();
+                Route::get('logout', LogoutController::class)
+                    ->name('logout');
 
-                    Session::invalidate();
-                    Session::regenerateToken();
-
-                    return redirect()->route('login');
-                })->name('logout');
-
-                Route::get('get-json-data/{id?}', function ($id) {
-                    if ($id === null) {
-                        return response()->json();
-                    }
-
-                    $document = Document::findOrFail($id);
-                    return response()->json(
-                        $document->json_data
-                    );
-                })->name('get-json-data');
+                Route::get('get-json-data/{id?}', GetDocumentJsonDataController::class)
+                    ->name('get-json-data');
             });
 
         Route::get('language/{locale}', LanguageController::class)

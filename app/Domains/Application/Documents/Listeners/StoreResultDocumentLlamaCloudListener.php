@@ -2,9 +2,7 @@
 
 namespace App\Domains\Application\Documents\Listeners;
 
-use App\Domains\Application\Documents\Enums\LlamaCloud\LlamaDocumentStatusEnum;
 use App\Domains\Application\Documents\Events\LLMDataProcessingEndedEvent;
-use App\Domains\Application\Documents\Events\LLMDataProcessingRunningEvent;
 use Exception;
 use Http;
 use Illuminate\Contracts\Queue\ShouldQueue;

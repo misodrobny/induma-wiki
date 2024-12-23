@@ -13,6 +13,7 @@ use Illuminate\Queue\InteractsWithQueue;
 class CheckDocumentLlamaCloudStatusListener implements ShouldQueue
 {
     use InteractsWithQueue;
+
     public function __construct() {}
 
     public function handle(LLMDataProcessingRunningEvent $event): void
