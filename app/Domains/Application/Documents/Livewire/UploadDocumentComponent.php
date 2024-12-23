@@ -2,7 +2,6 @@
 
 namespace App\Domains\Application\Documents\Livewire;
 
-use App\Domains\Application\Documents\Events\LLMDataProcessingTriggeredEvent;
 use App\Domains\Application\Documents\Models\Document;
 use Exception;
 use Flux\Flux;
@@ -22,7 +21,7 @@ class UploadDocumentComponent extends Component
     public $name;
 
     #[Validate]
-    /** @var TemporaryUploadedFile|null $file */
+    /** @var TemporaryUploadedFile|null */
     public $file;
 
     public function rules(): array
@@ -36,8 +35,15 @@ class UploadDocumentComponent extends Component
                 'required',
                 'mimetypes:application/pdf',
                 'max:20480',
-            ]
+            ],
         ];
+    }
+
+    public function updated(): void
+    {
+        if ($this->file instanceof TemporaryUploadedFile) {
+            $this->name = pathinfo($this->file->getClientOriginalName(), PATHINFO_FILENAME);
+        }
     }
 
     public function validationAttributes(): array
@@ -57,9 +63,9 @@ class UploadDocumentComponent extends Component
             $filename = $this->generateRandomFilename();
             $path = $this->generatePath($hash);
             $disk = config('filesystems.default');
-            $this->file->storeAs(path: $path, name: $filename, options: ['disk' => $disk ]  );
+            $this->file->storeAs(path: $path, name: $filename, options: ['disk' => $disk]);
 
-            $document = new Document();
+            $document = new Document;
             $document->name = $this->name;
             $document->disk = $disk;
             $document->original_filename = $this->file->getClientOriginalName();
@@ -68,16 +74,25 @@ class UploadDocumentComponent extends Component
             $document->save();
 
             Flux::toast(
-                text: 'Document was successfully stored.',
+                text: __('application.pages.documents.upload.messages.success.stored'),
                 variant: 'success'
             );
+
+            $this->file = null;
+            $this->name = null;
         } catch (Exception) {
             Flux::toast(
-                text: 'Unable to store the document.',
+                text: __('application.pages.documents.upload.messages.error.stored'),
                 variant: 'danger'
             );
 
         }
+    }
+
+    public function clearFile(): void
+    {
+        $this->file = null;
+        $this->name = null;
     }
 
     public function render(): Factory|Application|\Illuminate\Contracts\View\View|View
@@ -94,6 +109,7 @@ class UploadDocumentComponent extends Component
     {
         $timestamp = date('Ymd_His');
         $randomString = uniqid();
+
         return "file_{$timestamp}_$randomString";
     }
 }

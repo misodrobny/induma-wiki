@@ -9,7 +9,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class LLMDataProcessingTriggeredEvent implements ShouldQueue
+class LLMDataProcessingRunningEvent implements ShouldQueue
 {
     use Dispatchable, InteractsWithSockets, SerializesModels, InteractsWithQueue;
 

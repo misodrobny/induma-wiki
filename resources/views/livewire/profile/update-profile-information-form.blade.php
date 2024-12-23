@@ -85,31 +85,39 @@ new class extends Component {
 
     <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
         <div>
-            <x-input-label for="name" :value="__('tables.users.first_given_name')" class="required"/>
-            <x-text-input wire:model="first_given_name" id="first_given_name" name="first_given_name" type="text" class="mt-1 block w-full" required autofocus
-                          autocomplete="first_given_name"/>
-            <x-input-error class="mt-2" :messages="$errors->get('first_given_name')"/>
+            <flux:field>
+                <flux:label for="first_given_name" class="required">{{ __('tables.users.first_given_name') }}</flux:label>
+                <flux:input wire:model="first_given_name" id="first_given_name" name="first_given_name" type="text" class="mt-1 block w-full"
+                            autocomplete="first_given_name"/>
+                <flux:error name="first_given_name"/>
+            </flux:field>
         </div>
 
         <div>
-            <x-input-label for="name" :value="__('tables.users.second_given_name')"/>
-            <x-text-input wire:model="second_given_name" id="second_given_name" name="second_given_name" type="text" class="mt-1 block w-full" required autofocus
-                          autocomplete="second_given_name"/>
-            <x-input-error class="mt-2" :messages="$errors->get('second_given_name')"/>
+            <flux:field>
+                <flux:label for="second_given_name">{{ __('tables.users.second_given_name') }}</flux:label>
+                <flux:input wire:model="second_given_name" id="second_given_name" name="second_given_name" type="text" class="mt-1 block w-full"
+                            autocomplete="second_given_name"/>
+                <flux:error name="second_given_name"/>
+            </flux:field>
         </div>
 
         <div>
-            <x-input-label for="name" :value="__('tables.users.first_family_name')" class="required"/>
-            <x-text-input wire:model="first_family_name" id="first_family_name" name="first_family_name" type="text" class="mt-1 block w-full" required autofocus
-                          autocomplete="first_family_name"/>
-            <x-input-error class="mt-2" :messages="$errors->get('first_family_name')"/>
+            <flux:field>
+                <flux:label for="first_family_name" class="required">{{ __('tables.users.first_family_name') }}</flux:label>
+                <flux:input wire:model="first_family_name" id="first_family_name" name="first_family_name" type="text" class="mt-1 block w-full"
+                            autocomplete="first_family_name"/>
+                <flux:error name="first_family_name"/>
+            </flux:field>
         </div>
 
         <div>
-            <x-input-label for="name" :value="__('tables.users.second_family_name')"/>
-            <x-text-input wire:model="second_family_name" id="second_family_name" name="second_family_name" type="text" class="mt-1 block w-full" required autofocus
-                          autocomplete="second_family_name"/>
-            <x-input-error class="mt-2" :messages="$errors->get('second_family_name')"/>
+            <flux:field>
+                <flux:label for="second_family_name">{{ __('tables.users.second_family_name') }}</flux:label>
+                <flux:input wire:model="second_family_name" id="second_family_name" name="second_family_name" type="text" class="mt-1 block w-full"
+                            autocomplete="second_family_name"/>
+                <flux:error name="second_family_name"/>
+            </flux:field>
         </div>
 
         <div class="flex items-center gap-4">

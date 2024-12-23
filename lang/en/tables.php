@@ -21,5 +21,5 @@ return [
         'second_family_name' => 'Second family name',
         'email' => 'Email',
         'password' => 'Password',
-    ]
+    ],
 ];

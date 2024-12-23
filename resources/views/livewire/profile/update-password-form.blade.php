@@ -54,25 +54,33 @@ new class extends Component {
     </header>
 
     <form wire:submit="updatePassword" class="mt-6 space-y-6">
+
         <div>
-            <x-input-label for="update_password_current_password" :value="__('application.pages.profile.current_password')" class="required"/>
-            <x-text-input wire:model="current_password" id="update_password_current_password" name="current_password" type="password"
-                          class="mt-1 block w-full" autocomplete="current-password"/>
-            <x-input-error :messages="$errors->get('current_password')" class="mt-2"/>
+            <flux:field>
+                <flux:label for="update_password_current_password" class="required">{{ __('application.pages.profile.current_password') }}</flux:label>
+                <flux:input wire:model="current_password" id="update_password_current_password" name="current_password" type="password"
+                              class="mt-1 block w-full" autocomplete="current-password"/>
+
+                <flux:error name="current_password"/>
+            </flux:field>
         </div>
 
         <div>
-            <x-input-label for="update_password_password" :value="__('application.pages.profile.new_password')" class="required"/>
-            <x-text-input wire:model="password" id="update_password_password" name="password" type="password" class="mt-1 block w-full"
-                          autocomplete="new-password"/>
-            <x-input-error :messages="$errors->get('password')" class="mt-2"/>
+            <flux:field>
+                <flux:label for="update_password_password" class="required">{{ __('application.pages.profile.new_password') }}</flux:label>
+                <flux:input wire:model="password" id="update_password_password" name="password" type="password" class="mt-1 block w-full"
+                              autocomplete="new-password"/>
+                <flux:error name="password"/>
+            </flux:field>
         </div>
 
         <div>
-            <x-input-label for="update_password_password_confirmation" :value="__('application.pages.profile.confirm_password')" class="required"/>
-            <x-text-input wire:model="password_confirmation" id="update_password_password_confirmation" name="password_confirmation" type="password"
-                          class="mt-1 block w-full" autocomplete="new-password"/>
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
+            <flux:field>
+                <flux:label for="update_password_password_confirmation" class="required">{{ __('application.pages.profile.confirm_password') }}</flux:label>
+                <flux:input wire:model="password_confirmation" id="update_password_password_confirmation" name="password_confirmation" type="password"
+                              class="mt-1 block w-full" autocomplete="new-password"/>
+                <flux:error name="password_confirmation"/>
+            </flux:field>
         </div>
 
         <div class="flex items-center gap-4">

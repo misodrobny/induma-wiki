@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        $defaultAdminUser = new User();
+        $defaultAdminUser = new User;
         $defaultAdminUser->first_given_name = 'Admin';
         $defaultAdminUser->first_family_name = 'User';
         $defaultAdminUser->email = 'admin@application.com';

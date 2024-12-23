@@ -35,7 +35,9 @@ return [
         ],
         'documents' => [
             'actions' => [
-                'process_data' => 'Process data for LLM',
+                'process_data' => 'Upload the document to process data for LLM',
+                'sync' => 'Sync status of the document',
+                'show_json_data' => 'Show JSON Data',
             ],
             'upload' => [
                 'header' => 'Upload document',
@@ -44,6 +46,26 @@ return [
                 'name' => 'Document name',
                 'upload_file_text' => 'Upload a file',
                 'upload_file_max_size_text' => 'PDF up to 20MB',
+                'messages' => [
+                    'success' => [
+                        'stored' => 'Document was successfully stored.',
+                    ],
+                    'error' => [
+                        'stored' => 'Unable to store the document.',
+                    ],
+                ],
+            ],
+            'table' => [
+                'messages' => [
+                    'success' => [
+                        'process_for_llm_started' => 'Data processing triggered for LLM. Please wait for the result.',
+                        'sync_document_data_for_llm' => 'Syncing document data for LLM started. Please wait for the result.',
+                    ],
+                    'error' => [
+                        'unable_to_start' => 'Unable to process data for LLM.',
+                        'unable_to_sync' => 'Unable to sync document data for LLM.',
+                    ],
+                ],
             ],
         ],
     ],

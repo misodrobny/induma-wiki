@@ -16,7 +16,6 @@ use Illuminate\Notifications\Notifiable;
  * @property string $second_family_name
  * @property string $email
  * @property string $password
- * 
  */
 class User extends Authenticatable
 {
@@ -70,7 +69,7 @@ class User extends Authenticatable
         ];
 
         // Remove any null or empty values
-        $parts = array_filter($parts, fn($name) => !empty($name));
+        $parts = array_filter($parts, fn ($name) => ! empty($name));
 
         // Concatenate with spaces
         return implode(' ', $parts);
