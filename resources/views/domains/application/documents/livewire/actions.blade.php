@@ -14,4 +14,11 @@
     <flux:tooltip content="{{ __('application.pages.documents.actions.show_json_data') }}">
         <flux:button size="xs" icon-trailing="eye" wire:click="viewJsonDataForModel({{$item->id}})"></flux:button>
     </flux:tooltip>
+    <flux:tooltip content="{{ __('application.pages.documents.actions.download_json') }}">
+        <flux:button size="xs" icon-trailing="arrow-down-tray" variant="primary" href="{{ route('application.document.download', ['id' => $item->id]) }}"></flux:button>
+    </flux:tooltip>
 @endif
+<flux:tooltip content="{{ __('application.pages.documents.actions.download_pdf') }}">
+    <flux:button size="xs" icon-trailing="arrow-down-tray" variant="danger" href="{{ route('application.document.download', ['id' => $item->id, 'type' => \App\Domains\Application\Documents\Enums\DocumentTypeEnum::PDF->value]) }}"></flux:button>
+</flux:tooltip>
+

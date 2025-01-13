@@ -3,9 +3,15 @@
         <flux:heading level="1" size="xl">{{ $currentDocument?->name }}</flux:heading>
 
         <flux:subheading>
-            <p class="mb-2">Data from the document transformed to JSON, for easier interpretation by LLM.</p>
+            <p class="mb-2">{{ __('application.pages.documents.modals.show_json.description') }}</p>
         </flux:subheading>
     </div>
+
+    @if($currentDocument)
+    <flux:tooltip content="{{ __('application.pages.documents.actions.download_json') }}">
+        <flux:button class="mt-2" size="xs" icon-trailing="arrow-down-tray" variant="primary" href="{{ route('application.document.download', ['id' => $currentDocument?->id]) }}">{{ __('application.pages.documents.actions.download_json') }}</flux:button>
+    </flux:tooltip>
+    @endif
 
     <flux:separator/>
 

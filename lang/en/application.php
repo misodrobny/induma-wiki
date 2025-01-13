@@ -38,6 +38,8 @@ return [
                 'process_data' => 'Upload the document to process data for LLM',
                 'sync' => 'Sync status of the document',
                 'show_json_data' => 'Show JSON Data',
+                'download_json' => 'Download JSON',
+                'download_pdf' => 'Download PDF',
             ],
             'upload' => [
                 'header' => 'Upload document',
@@ -65,6 +67,11 @@ return [
                         'unable_to_start' => 'Unable to process data for LLM.',
                         'unable_to_sync' => 'Unable to sync document data for LLM.',
                     ],
+                ],
+            ],
+            'modals' => [
+                'show_json' => [
+                    'description' => 'Data from the document transformed to JSON, for easier interpretation by LLM.',
                 ],
             ],
         ],

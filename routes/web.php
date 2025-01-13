@@ -1,6 +1,7 @@
 <?php
 
 use App\Domains\Application\Dashboard\Controllers\DashboardController;
+use App\Domains\Application\Documents\Controllers\DownloadDocumentController;
 use App\Domains\Application\Documents\Controllers\GetDocumentJsonDataController;
 use App\Domains\Application\Documents\Controllers\ListDocumentsController;
 use App\Domains\Application\Documents\Controllers\UploadDocumentController;
@@ -27,6 +28,8 @@ Route::middleware([
                         Route::get('document/upload', UploadDocumentController::class)
                             ->name('document.upload');
 
+                        Route::get('document/{id}/{type?}', DownloadDocumentController::class)
+                            ->name('document.download');
                         Route::get('profile', function () {
                             return view('profile');
                         })->name('profile');
@@ -37,6 +40,7 @@ Route::middleware([
 
                 Route::get('get-json-data/{id?}', GetDocumentJsonDataController::class)
                     ->name('get-json-data');
+
             });
 
         Route::get('language/{locale}', LanguageController::class)

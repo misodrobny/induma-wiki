@@ -25,6 +25,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $deleted_at
  *
  * @method static findOrFail($id)
+ * @method static find(int $id)
  */
 class Document extends Model
 {
