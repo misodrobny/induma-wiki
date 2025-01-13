@@ -80,7 +80,7 @@ class DocumentsTable extends DataTableComponent
             Column::make('')
                 ->excludeFromColumnSelect()
                 ->label(
-                    fn (
+                    fn(
                         $row,
                         Column $column
                     ) => view('domains.application.documents.livewire.actions')->with([
@@ -89,6 +89,29 @@ class DocumentsTable extends DataTableComponent
                 ),
         ];
     }
+
+    public function startPreProcessForALlDocuments()
+    {
+
+        try {
+            $documents = Document::query()->whereNull('json_data')->get();
+
+            foreach ($documents as $document) {
+                event(new LLMDataProcessingTriggeredEvent($document));
+            }
+
+            Flux::toast(
+                text: __('application.pages.documents.table.messages.success.process_for_llm_started'),
+                variant: 'success'
+            );
+        } catch (Exception) {
+            Flux::toast(
+                text: __('application.pages.documents.table.messages.error.unable_to_start'),
+                variant: 'danger'
+            );
+        }
+    }
+
 
     public function processDataForLLM($id): void
     {

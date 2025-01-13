@@ -3,6 +3,7 @@
 namespace App\Domains\Application\Documents\Livewire;
 
 use App\Domains\Application\Documents\Models\Document;
+use App\Domains\Application\Documents\Traits\GenerateDocumentInfoTrait;
 use Exception;
 use Flux\Flux;
 use Illuminate\Contracts\View\Factory;
@@ -16,12 +17,16 @@ use Livewire\WithFileUploads;
 class UploadDocumentComponent extends Component
 {
     use WithFileUploads;
+    use GenerateDocumentInfoTrait;
 
     #[Validate]
     public $name;
 
     #[Validate]
-    /** @var TemporaryUploadedFile|null */
+    /**
+     * @var TemporaryUploadedFile|null
+     * @noinspection PhpVarTagWithoutVariableNameInspection
+     */
     public $file;
 
     public function rules(): array
@@ -49,8 +54,8 @@ class UploadDocumentComponent extends Component
     public function validationAttributes(): array
     {
         return [
-            'name' => 'Document name',
-            'file' => 'File',
+            'name' => __('application.pages.documents.upload.name'),
+            'file' => __('application.forms.file'),
         ];
     }
 
@@ -98,18 +103,5 @@ class UploadDocumentComponent extends Component
     public function render(): Factory|Application|\Illuminate\Contracts\View\View|View
     {
         return view('domains.application.documents.livewire.upload-document-component');
-    }
-
-    private function generatePath(string $hash): string
-    {
-        return sprintf('%s/%s/%s/%s', config('filesystems.prefix'), substr($hash, 0, 2), substr($hash, 2, 2), substr($hash, 4, 2));
-    }
-
-    private function generateRandomFilename(): string
-    {
-        $timestamp = date('Ymd_His');
-        $randomString = uniqid();
-
-        return "file_{$timestamp}_$randomString";
     }
 }

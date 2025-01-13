@@ -1,6 +1,7 @@
 <?php
 
 use App\Domains\Application\Dashboard\Controllers\DashboardController;
+use App\Domains\Application\Documents\Controllers\BatchUploadDocumentController;
 use App\Domains\Application\Documents\Controllers\DownloadDocumentController;
 use App\Domains\Application\Documents\Controllers\GetDocumentJsonDataController;
 use App\Domains\Application\Documents\Controllers\ListDocumentsController;
@@ -27,6 +28,9 @@ Route::middleware([
 
                         Route::get('document/upload', UploadDocumentController::class)
                             ->name('document.upload');
+
+                        Route::get('document/batch-upload', BatchUploadDocumentController::class)
+                            ->name('document.batch-upload');
 
                         Route::get('document/{id}/{type?}', DownloadDocumentController::class)
                             ->name('document.download');

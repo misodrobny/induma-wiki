@@ -11,6 +11,8 @@ return [
         'home' => 'Home',
         'documents' => 'Documents',
         'upload' => 'Upload',
+        'batch_upload' => 'Batch Upload',
+        'process_for_llm' => 'Process for LLM',
     ],
     'refresh' => 'Refresh',
     'buttons' => [

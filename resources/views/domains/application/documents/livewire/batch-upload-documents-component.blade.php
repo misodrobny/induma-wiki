@@ -2,21 +2,12 @@
     <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
         <div class="px-4 sm:px-0">
             <h2 class="text-base/7 font-semibold text-gray-900">{{ __('application.pages.documents.upload.header') }}</h2>
-            <p class="mt-1 text-sm/6 text-gray-600">{{ __('application.pages.documents.upload.description') }}</p>
+            <p class="mt-1 text-sm/6 text-gray-600">{{ __('application.pages.documents.upload.description_batch') }}</p>
         </div>
 
         <form wire:submit="save" class="bg-zinc-50 dark:bg-zinc-900 shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
             <div class="px-4 py-6 sm:p-8">
                 <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <div class="sm:col-span-4">
-                        <flux:field>
-                            <flux:label class="required">{{ __('application.pages.documents.upload.name') }}</flux:label>
-
-                            <flux:input wire:model.live="name" type="text" name="name" id="name" />
-
-                            <flux:error name="name" />
-                        </flux:field>
-                    </div>
 
                     <div class="col-span-full">
                         <label for="cover-photo"
@@ -48,7 +39,7 @@
                                         <input wire:model.live="file" id="file-upload" name="file-upload" type="file" class="sr-only">
                                     </label>
                                 </div>
-                                <p class="text-xs/5 text-gray-600">{{ __('application.pages.documents.upload.upload_file_max_size_text') }}</p>
+                                <p class="text-xs/5 text-gray-600">{{ __('application.pages.documents.upload.upload_file_max_size_text_batch') }}</p>
                             </div>
                         </div>
                         <flux:error name="file" />

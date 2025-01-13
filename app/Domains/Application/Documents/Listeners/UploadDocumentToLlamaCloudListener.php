@@ -39,9 +39,14 @@ class UploadDocumentToLlamaCloudListener implements ShouldQueue
 
                 event(new LLMDataProcessingRunningEvent($document));
             }
+            else
+            {
+                ray($response);
+            }
+
 
         } catch (Exception $exception) {
-
+            ray($exception->getMessage());
         }
     }
 }

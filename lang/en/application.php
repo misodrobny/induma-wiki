@@ -44,10 +44,12 @@ return [
             'upload' => [
                 'header' => 'Upload document',
                 'description' => 'Upload PDF, which you would like to process for use in Induma Wiki',
+                'description_batch' => 'Upload ZIP containing PDFs, which you would like to process for use in Induma Wiki',
                 'document_file' => 'Document file',
                 'name' => 'Document name',
                 'upload_file_text' => 'Upload a file',
                 'upload_file_max_size_text' => 'PDF up to 20MB',
+                'upload_file_max_size_text_batch' => 'ZIP up to 20MB',
                 'messages' => [
                     'success' => [
                         'stored' => 'Document was successfully stored.',
@@ -74,11 +76,22 @@ return [
                     'description' => 'Data from the document transformed to JSON, for easier interpretation by LLM.',
                 ],
             ],
+            'batch_upload' => [
+                'messages' => [
+                    'error_unable_upload_zip' => 'Application was unable to save the uploaded file. Please contact the system administrator.',
+                    'success_zip_extract' => 'ZIP successfully extracted and documents are processing.',
+                    'success_document_created' => 'Documents uploaded successfully.',
+                    'error_unable_to_save_document' => 'Unable to  upload :document_name .',
+                ],
+            ],
         ],
         'dashboard' => [
             'widgets' => [
                 'total_number_of_documents' => 'Total number of document',
             ],
         ],
+    ],
+    'forms' => [
+        'file' => 'File',
     ],
 ];

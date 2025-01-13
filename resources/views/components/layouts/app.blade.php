@@ -70,7 +70,7 @@
 </flux:main>
 
 @persist('toast')
-<flux:toast />
+<flux:toast position="top right" class="pt-14"/>
 @endpersist
 
 @livewireScripts

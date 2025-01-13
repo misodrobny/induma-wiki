@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Domains\Application\Documents\Livewire\BatchUploadDocumentsComponent;
 use App\Domains\Application\Documents\Livewire\DocumentsTable;
 use App\Domains\Application\Documents\Livewire\UploadDocumentComponent;
 use Illuminate\Support\ServiceProvider;
@@ -30,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
         Livewire::component('application.documents.table', DocumentsTable::class);
 
         Livewire::component('application.documents.upload', UploadDocumentComponent::class);
+        Livewire::component('application.documents.batch-upload', BatchUploadDocumentsComponent::class);
     }
 }
