@@ -68,5 +68,10 @@ return [
                 ],
             ],
         ],
+        'dashboard' => [
+            'widgets' => [
+                'total_number_of_documents' => 'Total number of document',
+            ],
+        ],
     ],
 ];
